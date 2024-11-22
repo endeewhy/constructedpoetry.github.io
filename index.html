@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html> 
+    <head>
+        <!-- head is the secret stuff the browser needs-->
+        <title>
+           🐸
+        </title>
+
+        <!-- css -->
+        <style>
+            /* selection, tell that selection how to affect the thing we selected */
+
+            video{
+                height: 100vh;
+            }
+
+            body{
+                margin: 0px;
+                background: white;
+                display:grid;
+                align-items: center;
+                justify-items: center;
+            }
+
+            h{
+                position: absolute;
+                text-align: center;
+                font-family: "Lucida Console", "Courier New", monospace;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                font-size: 5vh;
+            }
+            video.fade-out {
+            opacity: 0;
+        }
+        </style>
+    </head>
+
+    <body>
+        <!-- everything that we can see in the browser -->
+        <!-- world, hello -->
+         <p id="myRand"></p>
+        <video src="final_clips/word1.mp4"  onClick="this.play()" onEnded="videoEnded()"></video>
+       <h id="poem"></h>
+       <script>
+            let count = 0;
+            let randomTimes = Math.ceil( Math.random() * 8 + 3);
+            console.log(randomTimes, 'amount to play')
+            // now it is javascript
+            let previousMyRand = 0;
+            function videoEnded(){
+                let theater = document.querySelector("video");
+                console.log(theater);
+                // variable, temporary storage bucket, that can contain something
+               // removing repeat randoms
+                // roll die, generate random number
+                let myRand = Math.ceil( Math.random() * 47 + 1 );
+               
+                while( myRand === previousMyRand){
+                    myRand = Math.ceil( Math.random() * 47 + 1 )
+                    console.log('same, try again', myRand, previousMyRand)
+                };
+
+                previousMyRand = myRand;
+                console.log(myRand);
+                
+                
+
+                
+
+                if (count === randomTimes) {
+                    console.log ('stopping...')
+                    console.log (count)
+                    console.log (randomTimes)
+                    poem.textContent += '.'
+                    theater.classList.add("fade-out");
+                    return
+                } else {
+                    console.log ('loading new video')
+
+
+                // find video
+                
+                // go find the thing called video in the document, and store it in the bucket theater
+
+
+                
+                // change the filename of the video
+
+                theater.setAttribute('src', 'final_clips/word' + myRand + '.mp4');
+                // find the video based off random number
+    
+                // play the new video
+                theater.currentTime = 0;
+
+                theater.play();
+                const poem = document.getElementById('poem');
+                
+                if (myRand === 2) {
+                    poem.textContent += 'discombobulation '
+                } else if (myRand === 3) {
+                    poem.textContent += 'dreck '
+                } else if (myRand === 4) {
+                    poem.textContent += 'eccentric '
+                } else if (myRand === 5) {
+                    poem.textContent += 'fire '
+                } else if (myRand === 6) {
+                    poem.textContent += 'flabbergasted '
+                } else if (myRand === 7) {
+                    poem.textContent += 'foolish '
+                } else if (myRand === 8) {
+                    poem.textContent += 'fuck '
+                } else if (myRand === 9) {
+                    poem.textContent += 'hornswoggle '
+                } else if (myRand === 10) {
+                    poem.textContent += 'incoherency '
+                } else if (myRand === 11) {
+                    poem.textContent += 'isosthenuria '
+                } else if (myRand === 12) {
+                    poem.textContent += 'juxtaposition '
+                } else if (myRand === 13) {
+                    poem.textContent += 'kerfuffle '
+                } else if (myRand === 14) {
+                    poem.textContent += 'kerfuffle '
+                } else if (myRand === 15) {
+                    poem.textContent += 'mama '
+                } else if (myRand === 16) {
+                    poem.textContent += 'meow '
+                } else if (myRand === 17) {
+                    poem.textContent += 'moist '
+                } else if (myRand === 18) {
+                    poem.textContent += 'movie '
+                } else if (myRand === 19) {
+                    poem.textContent += 'noodle '
+                } else if (myRand === 20) {
+                    poem.textContent += 'nuclear '
+                } else if (myRand === 21) {
+                    poem.textContent += 'nyquil '
+                } else if (myRand === 22) {
+                    poem.textContent += 'oneiric '
+                } else if (myRand === 23) {
+                    poem.textContent += 'peripatetic '
+                } else if (myRand === 24) {
+                    poem.textContent += 'phantasmagoria '
+                } else if (myRand === 25) {
+                    poem.textContent += 'platysma '
+                } else if (myRand === 26) {
+                    poem.textContent += 'plenipotentiary '
+                } else if (myRand === 27) {
+                    poem.textContent += 'pomegranate '
+                } else if (myRand === 28) {
+                    poem.textContent += 'possible '
+                } else if (myRand === 29) {
+                    poem.textContent += 'preposterous '
+                } else if (myRand === 30) {
+                    poem.textContent += 'purulent '
+                } else if (myRand === 31) {
+                    poem.textContent += 'ramshackle '
+                } else if (myRand === 32) {
+                    poem.textContent += 'AHHH!!!! AHHHHHHH!!! '
+                } else if (myRand === 33) {
+                    poem.textContent += 'snow '
+                } else if (myRand === 34) {
+                    poem.textContent += 'spatchcock '
+                } else if (myRand === 35) {
+                    poem.textContent += 'tenacious '
+                } else if (myRand === 36) {
+                    poem.textContent += 'thus '
+                } else if (myRand === 37) {
+                    poem.textContent += 'unctuous '
+                } else if (myRand === 38) {
+                    poem.textContent += 'alfalfa '
+                } else if (myRand === 39) {
+                    poem.textContent += 'anabolic '
+                } else if (myRand === 40) {
+                    poem.textContent += 'before '
+                } else if (myRand === 41) {
+                    poem.textContent += 'cacophony '
+                } else if (myRand === 42) {
+                    poem.textContent += 'cheesecake '
+                } else if (myRand === 43) {
+                    poem.textContent += 'crispy '
+                } else if (myRand === 44) {
+                    poem.textContent += 'cumin '
+                } else if (myRand === 45) {
+                    poem.textContent += 'deplorable '
+                } else if (myRand === 46) {
+                    poem.textContent += 'zephyr '
+                } else if (myRand === 47) {
+                    poem.textContent += '. '
+                } else if (myRand === 48) {
+                    poem.textContent += ', '
+                }
+                count++;
+                }
+
+                // all that happens when the old video ends
+            }
+
+        </script>
+
+    </body>
+    
+</html>
