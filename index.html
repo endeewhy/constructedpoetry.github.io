@@ -76,15 +76,27 @@
                 justify-items: center;
             }
 
-            h{
+            h2{
                 position: absolute;
                 text-align: center;
                 font-family: "Lucida Console", "Courier New", monospace;
-                display: flex;
+                /* display: flex;
                 align-items: center;
                 justify-content: center;
-                flex-wrap: wrap;
+                flex-wrap: wrap; */
                 font-size: 5vh;
+                font-weight: normal;
+            }
+            button{
+                position: absolute;
+                margin-top: 20%;
+                font-family: "Lucida Console", "Courier New", monospace;
+                display: flex;
+                flex-wrap: wrap;
+                font-size: 2vh;
+                font-weight: normal;
+                background-color: white;
+                border: 0;
             }
             video.fade-out {
             opacity: 0;
@@ -92,6 +104,17 @@
              video::-webkit-media-controls-start-playback-button {
              display: none;
 }
+            button.fade-out {
+                opacity: 0;
+            }
+            button.fade-in {
+                opacity: 100;
+            }
+            button:hover{
+                background-color: rgb(183, 0, 0);
+                color: white;
+                border: 0;
+            }
         </style>
     </head>
 
@@ -99,26 +122,56 @@
         <!-- everything that we can see in the browser -->
         <!-- world, hello -->
          <p id="myRand"></p>
-        <video src="final_clips/word1.mp4"  onClick="this.play()" onEnded="videoEnded()" playsinline></video>
-       <h id="poem"></h>
+        <video src="final_clips/word1.mp4" onEnded="videoEnded()" playsinline preload="auto"></video>
+       <h2 id="poem"></h2>
+       <button onClick="videoPlay()">generate</button>
        <script>
+            let previousMyRand = 0;
             let count = 0;
-            let randomTimes = Math.ceil( Math.random() * 8 + 3);
+            let randomTimes = Math.ceil( Math.random() * 2 + 3);
             console.log(randomTimes, 'amount to play')
             // now it is javascript
-            let previousMyRand = 0;
+
+            let theater = document.querySelector("video");
+            let generate = document.querySelector("button");
+            function videoPlay(){
+                if (count === randomTimes) [
+                    console.log ('restart'),
+                    previousMyRand = 0,
+                    count = 0,
+                    randomTimes = Math.ceil( Math.random() * 2 + 3),
+                    theater.classList.remove("fade-out"),
+                    theater.setAttribute('src', 'final_clips/word1.mp4'),
+                    // poem.textContent += '\r\n'
+                    poem.innerHTML += '<br>',
+                    console.log(randomTimes, 'new amount to play')
+                ]
+                theater.play();
+                generate.classList.add("fade-out")
+            }
             function videoEnded(){
-                let theater = document.querySelector("video");
                 console.log(theater);
                 // variable, temporary storage bucket, that can contain something
                // removing repeat randoms
                 // roll die, generate random number
-                let myRand = Math.ceil( Math.random() * 47 + 1 );
+                let myRand = Math.ceil( Math.random() * 48 + 1 );
                
                 while( myRand === previousMyRand){
-                    myRand = Math.ceil( Math.random() * 47 + 1 )
+                    myRand = Math.ceil( Math.random() * 48 + 1 )
                     console.log('same, try again', myRand, previousMyRand)
                 };
+
+                if (previousMyRand === 0 && myRand === 47){
+                    console.log('starting period')
+                    myRand = Math.ceil( Math.random() * 48 + 1 )
+                }
+               
+                if (previousMyRand === 0 && myRand === 48){
+                    console.log('starting comma')
+                    myRand = Math.ceil( Math.random() * 48 + 1 )
+                }
+
+                
 
                 previousMyRand = myRand;
                 console.log(myRand);
@@ -131,8 +184,19 @@
                     console.log ('stopping...')
                     console.log (count)
                     console.log (randomTimes)
-                    poem.textContent += '.'
+                    
+                    //this is an array of punctionation
+                    let punct = ['.<br>',',',';','...','?<br>','! <br>','?!<br>']
+
+                    //generate a randim # from 0-how ever many are in the array (length)
+                    let randPunct = Math.floor(Math.random()*punct.length)
+
+                    // poem.innerHTML += '.'
+                    //look up the symbol from the array based on the random # and append it to the innerHTML
+                    poem.innerHTML += punct[randPunct]
+
                     theater.classList.add("fade-out");
+                    generate.classList.remove("fade-out");
                     return
                 } else {
                     console.log ('loading new video')
@@ -156,99 +220,101 @@
                 const poem = document.getElementById('poem');
                 
                 if (myRand === 2) {
-                    poem.textContent += 'discombobulation '
+                    poem.innerHTML += 'discombobulation '
                 } else if (myRand === 3) {
-                    poem.textContent += 'dreck '
+                    poem.innerHTML += 'dreck '
                 } else if (myRand === 4) {
-                    poem.textContent += 'eccentric '
+                    poem.innerHTML += 'eccentric '
                 } else if (myRand === 5) {
-                    poem.textContent += 'fire '
+                    poem.innerHTML += 'fire '
                 } else if (myRand === 6) {
-                    poem.textContent += 'flabbergasted '
+                    poem.innerHTML += 'flabbergasted '
                 } else if (myRand === 7) {
-                    poem.textContent += 'foolish '
+                    poem.innerHTML += 'foolish '
                 } else if (myRand === 8) {
-                    poem.textContent += 'fuck '
+                    poem.innerHTML += 'fuck '
                 } else if (myRand === 9) {
-                    poem.textContent += 'hornswoggle '
+                    poem.innerHTML += 'hornswoggle '
                 } else if (myRand === 10) {
-                    poem.textContent += 'incoherency '
+                    poem.innerHTML += 'incoherency '
                 } else if (myRand === 11) {
-                    poem.textContent += 'isosthenuria '
+                    poem.innerHTML += 'isosthenuria '
                 } else if (myRand === 12) {
-                    poem.textContent += 'juxtaposition '
+                    poem.innerHTML += 'juxtaposition '
                 } else if (myRand === 13) {
-                    poem.textContent += 'kerfuffle '
+                    poem.innerHTML += 'kerfuffle '
                 } else if (myRand === 14) {
-                    poem.textContent += 'kerfuffle '
+                    poem.innerHTML += 'kerfuffle '
                 } else if (myRand === 15) {
-                    poem.textContent += 'mama '
+                    poem.innerHTML += 'mama '
                 } else if (myRand === 16) {
-                    poem.textContent += 'meow '
+                    poem.innerHTML += 'meow '
                 } else if (myRand === 17) {
-                    poem.textContent += 'moist '
+                    poem.innerHTML += 'moist '
                 } else if (myRand === 18) {
-                    poem.textContent += 'movie '
+                    poem.innerHTML += 'movie '
                 } else if (myRand === 19) {
-                    poem.textContent += 'noodle '
+                    poem.innerHTML += 'noodle '
                 } else if (myRand === 20) {
-                    poem.textContent += 'nuclear '
+                    poem.innerHTML += 'nuclear '
                 } else if (myRand === 21) {
-                    poem.textContent += 'nyquil '
+                    poem.innerHTML += 'nyquil '
                 } else if (myRand === 22) {
-                    poem.textContent += 'oneiric '
+                    poem.innerHTML += 'oneiric '
                 } else if (myRand === 23) {
-                    poem.textContent += 'peripatetic '
+                    poem.innerHTML += 'peripatetic '
                 } else if (myRand === 24) {
-                    poem.textContent += 'phantasmagoria '
+                    poem.innerHTML += 'phantasmagoria '
                 } else if (myRand === 25) {
-                    poem.textContent += 'platysma '
+                    poem.innerHTML += 'platysma '
                 } else if (myRand === 26) {
-                    poem.textContent += 'plenipotentiary '
+                    poem.innerHTML += 'plenipotentiary '
                 } else if (myRand === 27) {
-                    poem.textContent += 'pomegranate '
+                    poem.innerHTML += 'pomegranate '
                 } else if (myRand === 28) {
-                    poem.textContent += 'possible '
+                    poem.innerHTML += 'possible '
                 } else if (myRand === 29) {
-                    poem.textContent += 'preposterous '
+                    poem.innerHTML += 'preposterous '
                 } else if (myRand === 30) {
-                    poem.textContent += 'purulent '
+                    poem.innerHTML += 'purulent '
                 } else if (myRand === 31) {
-                    poem.textContent += 'ramshackle '
+                    poem.innerHTML += 'ramshackle '
                 } else if (myRand === 32) {
-                    poem.textContent += 'AHHH!!!! AHHHHHHH!!! '
+                    poem.innerHTML += 'AHHH!!!! AHHHHHHH!!! '
                 } else if (myRand === 33) {
-                    poem.textContent += 'snow '
+                    poem.innerHTML += 'snow '
                 } else if (myRand === 34) {
-                    poem.textContent += 'spatchcock '
+                    poem.innerHTML += 'spatchcock '
                 } else if (myRand === 35) {
-                    poem.textContent += 'tenacious '
+                    poem.innerHTML += 'tenacious '
                 } else if (myRand === 36) {
-                    poem.textContent += 'thus '
+                    poem.innerHTML += 'thus '
                 } else if (myRand === 37) {
-                    poem.textContent += 'unctuous '
+                    poem.innerHTML += 'unctuous '
                 } else if (myRand === 38) {
-                    poem.textContent += 'alfalfa '
+                    poem.innerHTML += 'alfalfa '
                 } else if (myRand === 39) {
-                    poem.textContent += 'anabolic '
+                    poem.innerHTML += 'anabolic '
                 } else if (myRand === 40) {
-                    poem.textContent += 'before '
+                    poem.innerHTML += 'before '
                 } else if (myRand === 41) {
-                    poem.textContent += 'cacophony '
+                    poem.innerHTML += 'cacophony '
                 } else if (myRand === 42) {
-                    poem.textContent += 'cheesecake '
+                    poem.innerHTML += 'cheesecake '
                 } else if (myRand === 43) {
-                    poem.textContent += 'crispy '
+                    poem.innerHTML += 'crispy '
                 } else if (myRand === 44) {
-                    poem.textContent += 'cumin '
+                    poem.innerHTML += 'cumin '
                 } else if (myRand === 45) {
-                    poem.textContent += 'deplorable '
+                    poem.innerHTML += 'deplorable '
                 } else if (myRand === 46) {
-                    poem.textContent += 'zephyr '
+                    poem.innerHTML += 'zephyr '
                 } else if (myRand === 47) {
-                    poem.textContent += '. '
+                    poem.innerHTML += ', '
                 } else if (myRand === 48) {
-                    poem.textContent += ', '
+                    poem.innerHTML += ', '
+                } else if (myRand === 49) {
+                    poem.innerHTML += 'a '
                 }
                 count++;
                 }
