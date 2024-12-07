@@ -70,10 +70,12 @@
             video{
                 height: 100vh;
                 width: 100vw;
-                display: flex;
+                /* display: flex;
                 align-items: center;
                 justify-content: center;
-                flex-wrap: wrap;
+                flex-wrap: wrap; */
+                grid-row: 1/2;
+                grid-column: 1/2;
             }
 
             body{
@@ -84,13 +86,21 @@
                 display: grid;
                 align-items: center;
                 justify-items: center;
-                flex-wrap: wrap;
+                /* flex-wrap: wrap; */
+            }
+
+            section{
+                z-index:9999;
+                grid-row: 1/2;
+                grid-column: 1/2;
+                display:grid;
+                justify-items: center;
             }
 
             h2{
-                position: absolute;
+                /* position: absolute;
                 align-items: center;
-                justify-content: center;
+                justify-content: center; */
                 text-align: center;
                 font-family: "Lucida Console", "Courier New", monospace;
                 /* display: flex;
@@ -99,10 +109,11 @@
                 flex-wrap: wrap; */
                 font-size: 2.2vw;
                 font-weight: normal;
+
             }
             button{
-                position: absolute;
-                margin-top: 20%;
+                /* position: absolute; */
+                /* margin-top: 20%; */
                 font-family: "Lucida Console", "Courier New", monospace;
                 display: flex;
                 flex-wrap: wrap;
@@ -111,7 +122,7 @@
                 background-color: white;
                 border: 0;
                 color: black;
-                align-items: center;
+                /* align-items: center; */
             }
             video.fade-out {
             opacity: 0;
@@ -138,8 +149,13 @@
         <!-- world, hello -->
          <p id="myRand"></p>
         <video src="final_clips/word1.mp4" onEnded="videoEnded()" playsinline preload="auto"></video>
-       <h2 id="poem"></h2>
+       
+       <section>
+        <h2 id="poem"></h2>
        <button onClick="videoPlay()">generate</button>
+        </section>
+
+
        <script>
             let previousMyRand = 0;
             let count = 0;
