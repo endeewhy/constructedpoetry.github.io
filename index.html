@@ -4,7 +4,7 @@
     <head>
         <!-- head is the secret stuff the browser needs-->
         <title>
-           🐸
+           constructedpoetry 🐸
         </title>
         <link rel="preload" href="final_clips/word1.mp4" as="video"/>
         <link rel="preload" href="final_clips/word2.mp4" as="video"/>
@@ -65,6 +65,8 @@
                     height: 0;
                     width: 0;
                     margin: 0 auto;
+                    font-size: 5.2vw;
+
                  }
             }
             video{
@@ -185,21 +187,21 @@
                 // variable, temporary storage bucket, that can contain something
                // removing repeat randoms
                 // roll die, generate random number
-                let myRand = Math.ceil( Math.random() * 48 + 1 );
+                let myRand = Math.ceil( Math.random() * 64 + 1 );
                
                 while( myRand === previousMyRand){
-                    myRand = Math.ceil( Math.random() * 48 + 1 )
+                    myRand = Math.ceil( Math.random() * 64 + 1 )
                     console.log('same, try again', myRand, previousMyRand)
                 };
 
                 if (previousMyRand === 0 && myRand === 47){
                     console.log('starting period')
-                    myRand = Math.ceil( Math.random() * 48 + 1 )
+                    myRand = Math.ceil( Math.random() * 64 + 1 )
                 }
                
                 if (previousMyRand === 0 && myRand === 48){
                     console.log('starting comma')
-                    myRand = Math.ceil( Math.random() * 48 + 1 )
+                    myRand = Math.ceil( Math.random() * 64 + 1 )
                 }
 
                 
@@ -346,7 +348,40 @@
                     poem.innerHTML += ', '
                 } else if (myRand === 49) {
                     poem.innerHTML += 'a '
+                } else if (myRand === 50) {
+                    poem.innerHTML += 'bodacious '
+                } else if (myRand === 51) {
+                    poem.innerHTML += 'oft '
+                } else if (myRand === 52) {
+                    poem.innerHTML += 'onomatopia '
+                } else if (myRand === 53) {
+                    poem.innerHTML += 'orangutang '
+                } else if (myRand === 54) {
+                    poem.innerHTML += 'pants '
+                } else if (myRand === 55) {
+                    poem.innerHTML += 'pomposity '
+                } else if (myRand === 56) {
+                    poem.innerHTML += 'pony '
+                } else if (myRand === 57) {
+                    poem.innerHTML += 'porch '
+                } else if (myRand === 58) {
+                    poem.innerHTML += 'puppy '
+                } else if (myRand === 59) {
+                    poem.innerHTML += 'schadenfreude '
+                } else if (myRand === 60) {
+                    poem.innerHTML += 'sexy '
+                } else if (myRand === 61) {
+                    poem.innerHTML += 'squelch '
+                } else if (myRand === 62) {
+                    poem.innerHTML += 'the '
+                } else if (myRand === 63) {
+                    poem.innerHTML += 'then '
+                } else if (myRand === 64) {
+                    poem.innerHTML += 'when '
+                } else if (myRand === 65) {
+                    poem.innerHTML += 'yonder '
                 }
+                
                 count++;
                 }
 
